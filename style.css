@@ -1,2 +1,14 @@
 .main{ width:400px;
 margin: 0 auto;}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(
+        180deg,
+        #e0f7ff 0%,   /* icy light blue */
+        #b5e4f5 40%,  /* soft winter blue */
+        #7cc4e4 75%,  /* deeper cold blue */
+        #4a90c2 100%  /* cool winter dusk */
+    );
+}

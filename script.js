@@ -1,6 +1,6 @@
-let P
-let E
-let C
+//point system//
+let point = 0;
+//noninputs//
 let numberButton = document.querySelector(".first");
 let wordButton = document.querySelector(".third_button");
 let thirdAnswer = document.querySelector(".third_answer");
@@ -12,13 +12,15 @@ let forthTruth = document.querySelector(".forth_truth");
 let forthFalse = document.querySelector(".forth_false");
 let ending = document.querySelector(".ending");
 let end = document.querySelector(".end");
+//inputs//
 let firstAnswer = document.getElementById("first");
 let secondAnswer2 = document.getElementById("second");
 let thirdAnswer2 = document.getElementById("third");
 let forthAnswer = document.getElementById("forth");
 let colorPicker = document.getElementById('favoriteColor');
+let square = document.getElementById('mySquare');
 
-
+let points = 0;
 
 numberButton.addEventListener('click', function(){
 let number = document.querySelector(".number").value;
@@ -26,9 +28,17 @@ let number2 = document.querySelector(".number2").value;
 
 //first question//
 if(number * number2 === 4){
-      P + 1
+     Score(1);
+console.log(point);
+document.body.style.margin = "0";
+document.body.style.height = "100vh";
+document.body.style.background = "linear-gradient(180deg, #ff9a3c 0%, #ff5f6d 40%, #d45079 70%, #662d8c 100%)";
   console.log("correct")
+  
 }else{
+   Score(-1);
+console.log(point);
+  
   console.log("wrong")
 };
 });
@@ -39,9 +49,16 @@ let third = document.querySelector(".third").value;
 thirdAnswer.innerHTML = `collin is eating ${third} skittles`;
 
 if(third === "his"){
-      E + 1
+    Score(1);
+console.log(point);
   console.log("correct")
+    document.body.style.background = 
+    "linear-gradient(120deg, #8b0000, #ff8c00, #cd853f)";
+  document.body.style.minHeight = "100vh";
 }else{
+   Score(-1);
+console.log(point);
+  
       console.log("wrong");
 }
 });
@@ -55,9 +72,20 @@ console.log(sixth);
 sixth = Number(sixth);  
   console.log(sixth);
 if(sixth === 1776){
-C + 1
+Score(1);
+console.log(point);
   console.log("correct");
+  document.body.style.margin = "0";
+document.body.style.height = "100vh";
+
+document.body.style.background =
+  "linear-gradient(180deg, #c40000 0%, #ffffff 50%, #0033a0 100%)";
+
+document.body.style.backgroundSize = "100% 100%";
 }else{
+   Score(-1);
+console.log(point);
+  
       console.log("wrong");
 };
 
@@ -65,31 +93,31 @@ C + 1
 
 //second question//
 firstAnswer.addEventListener('change', function() {
-  // Check if the radio button is currently checked
+ 
   if (this.checked) {
-    // Perform the desired action when this radio button is selected
     console.log('correct');
-    // Example: change text content of an element
-  P + 1
+Score(1);
+console.log(point);
+document.body.style.background = 
+    "linear-gradient(150deg, #E487B1, #e100ffff, #3fcd7aff)";
+  document.body.style.minHeight = "100vh";
   }
 });
 
 secondAnswer2.addEventListener('change', function() {
-  // Check if the radio button is currently checked
   if (this.checked) {
-    // Perform the desired action when this radio button is selected
     console.log('wrong');
-    // Example: change text content of an element
+     Score(-1);
+console.log(point);
   
   }
 });
 
 thirdAnswer2.addEventListener('change', function() {
-  
   if (this.checked) {
-    
     console.log('wrong');
-   
+     Score(-1);
+console.log(point);
   
   }
 });
@@ -99,7 +127,8 @@ forthAnswer.addEventListener('change', function() {
   if (this.checked) {
     
     console.log('wrong');
-    
+    Score(-1);
+console.log(point);
   
   }
 });
@@ -111,24 +140,71 @@ colorPicker.addEventListener('input', function() {
     selectedColorDisplay.textContent = `Selected color: ${colorPicker.value}`;
 });
 
+function getRandomColor() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r}, ${g}, ${b})`;
+}
+let randomColor = getRandomColor();
+square.style.backgroundColor = randomColor;
+
 //fifth question//
 fifthFalse.addEventListener('click', function(){
 console.log("correct")
-E + 1
+Score(1);
+console.log(point);
+document.body.style.margin = "0";
+document.body.style.height = "100vh";
+document.body.style.background = "linear-gradient(135deg, #b30000 0%, #e63946 35%, #1b5e20 70%, #f7d774 100%)";
+document.body.style.backgroundSize = "100% 100%";
 });
 
 //forth question//
 forthTruth.addEventListener('click', function(){
 console.log("correct")
-C + 1
+Score(1);
+console.log(point);
+document.body.style.margin = "0";
+document.body.style.height = "100vh";
+document.body.style.position = "relative";
+document.body.style.overflow = "hidden";
+
+document.body.style.background =
+  "linear-gradient(180deg, #dff3ff 0%, #b9e1ff 35%, #8ecaff 70%, #66aee6 100%)";
+document.body.style.backgroundSize = "100% 100%";
+
+let sCount = 0;
+while (sCount < 120) {
+  let star = document.createElement("div");
+  star.style.position = "absolute";
+
+  let size = 1 + Math.random() * 3;  
+  star.style.width = size + "px";
+  star.style.height = size + "px";
+  star.style.borderRadius = "50%";
+
+  star.style.background = "white";
+  star.style.opacity = 0.8 + Math.random() * 0.2;
+
+  star.style.boxShadow = "0 0 " + (4 + Math.random() * 6) + "px white";
+
+  star.style.left = (Math.random() * window.innerWidth) + "px";
+  star.style.top  = (Math.random() * window.innerHeight) + "px";
+
+  document.body.appendChild(star);
+  sCount++;
+}
 });
 
 //final//
-end.addEventListener('click', function(){
-if(P + E + C > 5){
-ending.innerHTMl = "You have passed the test";
+function Score(x){
+point = point + x;
+if(point >= 5){
+  ending.innerHTML = `you have passed ${point}`;
 }else{
-  ending.innerHTML = "you have failed the test you should be disappointed"
-};
+  ending.innerHTML = `you have failed ${point}`;
+}
 
-});
+};
+Score(0);
