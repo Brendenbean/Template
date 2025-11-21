@@ -12,13 +12,15 @@ let forthTruth = document.querySelector(".forth_truth");
 let forthFalse = document.querySelector(".forth_false");
 let ending = document.querySelector(".ending");
 let end = document.querySelector(".end");
+let numberGiven = document.querySelector(".number-given");
 //inputs//
 let firstAnswer = document.getElementById("first");
 let secondAnswer2 = document.getElementById("second");
 let thirdAnswer2 = document.getElementById("third");
 let forthAnswer = document.getElementById("forth");
-let colorPicker = document.getElementById('favoriteColor');
-let square = document.getElementById('mySquare');
+let colorPicker = document.getElementById('myColorPicker');
+let resultDiv = document.getElementById('result');
+let test = document.querySelector(".test");
 
 let points = 0;
 
@@ -134,20 +136,36 @@ console.log(point);
 });
 
 //seventh question//
+test.addEventListener('click', function(){
+  let randomNumber = Math.floor(Math.random() * 256);
+  console.log(randomNumber);
+  numberGiven.innerHTML = `the given red value is ${randomNumber}`;
+  
+  colorPicker.addEventListener('input', () => {
+    // 2. Generate a random number between 0 and 255
+    
 
-colorPicker.addEventListener('input', function() {
-    // Update the display with the new color value
-    selectedColorDisplay.textContent = `Selected color: ${colorPicker.value}`;
+    // 3. Extract the red value from the chosen color
+    // The color picker value is in hex format (#RRGGBB)
+    let hexColor = colorPicker.value;
+    let redHex = hexColor.substring(1, 3); // Get the RR part
+    let redValue = parseInt(redHex, 16); // Convert hex to decimal
+
+    // 4. Compare the red value with the random number
+    if (redValue < randomNumber) {
+        // 5. Execute the desired action
+        Score(1);
+console.log(point);
+        resultDiv.textContent = `Red value ${redValue} is less than the random number ${randomNumber}. good job`;
+        resultDiv.style.backgroundColor = 'lightcoral';
+    } else {
+      console.log("problem");
+        resultDiv.textContent = `Red value ${redValue} is NOT less than the random number ${randomNumber}.`;
+        resultDiv.style.backgroundColor = 'lightgreen';
+    }
+});
 });
 
-function getRandomColor() {
-  const r = Math.floor(Math.random() * 256);
-  const g = Math.floor(Math.random() * 256);
-  const b = Math.floor(Math.random() * 256);
-  return `rgb(${r}, ${g}, ${b})`;
-}
-let randomColor = getRandomColor();
-square.style.backgroundColor = randomColor;
 
 //fifth question//
 fifthFalse.addEventListener('click', function(){
