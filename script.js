@@ -157,7 +157,7 @@ test.addEventListener('click', function(){
         Score(1);
 console.log(point);
         resultDiv.textContent = `Red value ${redValue} is less than the random number ${randomNumber}. good job`;
-        resultDiv.style.backgroundColor = 'lightcoral';
+        resultDiv.style.backgroundColor = 'lightgreen';
     } else {
       console.log("problem");
         resultDiv.textContent = `Red value ${redValue} is NOT less than the random number ${randomNumber}.`;
